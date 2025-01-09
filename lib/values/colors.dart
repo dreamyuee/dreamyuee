@@ -4,7 +4,7 @@ class AppColors {
   static const double primaryColorOpacity = 0.1;
 
   static const Color primaryColor = Color.fromARGB(255, 28, 28, 28);
-  static const Color secondaryColor = Color(0xFFEBEBEB);
+  static const Color secondaryColor = Color.fromARGB(255, 255, 237, 237);
   static const Color accentColor = Color(0xFF5F6E80);
   static const Color accentColor2 = Color(0xFF000000);
   static const Color accentColor3 = Color(0xff75809C);

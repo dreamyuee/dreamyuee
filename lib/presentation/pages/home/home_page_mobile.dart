@@ -140,45 +140,30 @@ class _HomePageMobileState extends State<HomePageMobile> {
   }
 
   Widget _buildAppBar() {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: Sizes.PADDING_16,
-        vertical: Sizes.PADDING_16,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              if (_scaffoldKey.currentState!.isEndDrawerOpen) {
-                _scaffoldKey.currentState!.openEndDrawer();
-              } else {
-                _scaffoldKey.currentState!.openDrawer();
-              }
-            },
-            icon: Icon(Icons.menu),
-          ),
-          CircularContainer(
-            color: AppColors.primaryColor,
-            child: InkWell(
-              onTap: () {
-                Functions.launchUrl(StringConst.EMAIL_URL);
-//                Navigator.pushNamed(
-//                  context,
-//                  ContactPage.contactPageRoute,
-//                );
-              },
-              child: Icon(
-                Icons.email,
-                color:  const ui.Color.fromARGB(255, 255, 191, 206),
-                              
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  return Container(
+    padding: EdgeInsets.symmetric(
+      horizontal: Sizes.PADDING_16,
+      vertical: Sizes.PADDING_16,
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          onPressed: () {
+            if (_scaffoldKey.currentState!.isEndDrawerOpen) {
+              _scaffoldKey.currentState!.openEndDrawer();
+            } else {
+              _scaffoldKey.currentState!.openDrawer();
+            }
+          },
+          icon: Icon(Icons.menu),
+          color:  const ui.Color.fromARGB(255, 255, 191, 206),
+        ),
+      ],
+    ),
+  );
+}
+
 
   Widget _buildDevImage() {
     return Positioned(

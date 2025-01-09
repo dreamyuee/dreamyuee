@@ -4,7 +4,7 @@ class StringConst {
   //strings
   static const String APP_NAME = "Yue Wen Portfolio";
   static const String APP_TITLE = "Yue Wen Portfolio";
-  static const String SITE_URL = "https://davidcobbina.com";
+  static const String SITE_URL = "";
 
   static const String HOME = "Home";
   static const String ABOUT_ME = "About Me";
@@ -44,10 +44,10 @@ class StringConst {
   static const String BUILT_BY = "";
 
   static const String ABOUT_DEV_TEXT =
-      "I'm a software engineer based in Ghana, specializing in building high quality mobile and web applications with a strong passion for opensource work. My goal is to always build pixel perfect high performant applications that provides users with a rich experience.";
+      "";
 
   static const String EDUCATION_TEXT =
-      "I am self taught programmer who graduated from Kwame Nkrumah Univeristy of Science Technology with a degree in Agricultural Engineering. I love learning and writing computer programs.";
+      "";
   //Form Hint Texts
   static const String NAME_HINT_TEXT = "Name";
   static const String PHONE_HINT_TEXT = "Phone (Optional)";
@@ -83,13 +83,13 @@ class StringConst {
   static const String CERTIFICATION_PAGE = "/certifications";
 
   //Socials
-  static const String GITHUB_URL = "https://github.com/david-legend";
+  static const String GITHUB_URL = "https://github.com/dreamyuee";
   static const String LINKED_IN_URL =
-      "www.linkedin.com/in/yuewendy";
-  static const String TWITTER_URL = "https://twitter.com/DavidLegend47";
+      "https://www.linkedin.com/in/yuewendy";
+  static const String TWITTER_URL = "";
   static const String INSTAGRAM_URL =
       "https://www.instagram.com/__weenndy_";
-  static const String TELEGRAM_URL = "https://t.me/DavidLegend";
+  static const String TELEGRAM_URL = "";
 
 
   //Contacts

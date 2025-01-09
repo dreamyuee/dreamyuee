@@ -103,21 +103,21 @@ class _MenuItemState extends State<MenuItem> with TickerProviderStateMixin {
                   children: [
                     FlickerTextAnimation(
                       text: widget.title,
-                      textColor: AppColors.primaryColor,
+                      textColor: const ui.Color.fromARGB(255, 255, 191, 206),
                       fadeInColor: AppColors.primaryColor,
 //                      mainAxisAlignment: MainAxisAlignment.center,
                       controller: _controller.view,
                       textStyle: !widget.selected
                           ? theme.textTheme.bodyLarge!.copyWith(
                               fontSize: Sizes.TEXT_SIZE_16,
-                              color: AppColors.accentColor2,
+                              color: const Color.fromARGB(255, 255, 255, 255)
                             )
                           : null,
                     ),
                     widget.selected ? SpaceH8() : Container(),
                     widget.selected
                         ? HorizontalBar(
-                            color: AppColors.primaryColor,
+                            color: const Color.fromARGB(255, 255, 255, 255),
                           )
                         : Container(),
                   ],

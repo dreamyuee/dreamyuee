@@ -27,7 +27,7 @@ class AppTheme {
 
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: Color(0xFF2C3541),
-    secondary: Color(0xFFEFF3F3),
+    secondary:  Color.fromARGB(255, 255, 237, 237),
     surface: Color(0xFFFAFBFB),
     error: _lightFillColor,
     onError: _lightFillColor,
