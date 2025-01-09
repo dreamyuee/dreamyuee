@@ -164,7 +164,7 @@ class _PortfolioPageDesktopState extends State<PortfolioPageDesktop>
                       context: context,
                       fraction: widthOfRightContentWrapperAnimation.value,
                     ),
-                    color: AppColors.secondaryColor,
+                    color: const Color.fromARGB(255, 255, 237, 237),
                     child: Row(
                       children: [
                         Container(

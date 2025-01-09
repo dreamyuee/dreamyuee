@@ -8,7 +8,7 @@ import 'package:aerium/presentation/widgets/content_wrapper.dart';
 import 'package:aerium/presentation/widgets/socials.dart';
 import 'package:aerium/presentation/widgets/spaces.dart';
 import 'package:aerium/values/values.dart';
-
+import 'dart:ui' as ui;
 import 'home_page.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -56,14 +56,15 @@ class _HomePageMobileState extends State<HomePageMobile> {
                                   Text(
                                     StringConst.DEV_NAME,
                                     style: theme.textTheme.headlineMedium!.copyWith(
-                                      color: AppColors.secondaryColor,
+                                      color:  const ui.Color.fromARGB(255, 255, 191, 206),
                                     ),
                                   ),
                                   SpaceH8(),
                                   Text(
                                     StringConst.SPECIALITY,
                                     style: theme.textTheme.titleLarge!.copyWith(
-                                      color: AppColors.secondaryColor,
+                                      color:  const ui.Color.fromARGB(255, 255, 191, 206),
+                              
                                     ),
                                   ),
                                 ],
@@ -88,8 +89,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
                                         textAlign: TextAlign.end,
                                         style:
                                             theme.textTheme.bodyLarge!.copyWith(
-                                          color: AppColors.secondaryColor,
+                                          color: AppColors.primaryColor,
                                           fontSize: Sizes.TEXT_SIZE_18,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
@@ -97,7 +99,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
                                     CircularContainer(
                                       width: Sizes.WIDTH_24,
                                       height: Sizes.HEIGHT_24,
-                                      color: AppColors.secondaryColor,
+                                      color:  const ui.Color.fromARGB(255, 255, 191, 206),
+                      
                                       child: Icon(
                                         Icons.keyboard_arrow_down,
                                         color: AppColors.primaryColor,
@@ -119,7 +122,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
                     ),
                     ContentWrapper(
                       width: assignWidth(context: context, fraction: 0.2),
-                      color: AppColors.secondaryColor,
+                      color:  const ui.Color.fromARGB(255, 255, 191, 206),
+                            
                       child: Container(),
                     ),
                   ],
@@ -166,7 +170,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
               },
               child: Icon(
                 Icons.email,
-                color: AppColors.secondaryColor,
+                color:  const ui.Color.fromARGB(255, 255, 191, 206),
+                              
               ),
             ),
           ),
@@ -196,8 +201,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
       child: Socials(
         isVertical: true,
         alignment: Alignment.centerRight,
-        color: AppColors.secondaryColor,
-        barColor: AppColors.secondaryColor,
+        color:  const ui.Color.fromARGB(255, 255, 191, 206),
+                              
+        barColor:  const ui.Color.fromARGB(255, 255, 191, 206),
+                                
         crossAxisAlignment: CrossAxisAlignment.end,
       ),
     );

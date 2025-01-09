@@ -21,7 +21,7 @@ I value keeping my site open source, but as you all know, _**plagiarism is bad**
 
 ### TL;DR
 
-Yes, you can fork this repo. Please give me proper credit by linking back to [davidcobbina.com](http://davidcobbina.com). Thanks!
+Yes, you can fork this repo. Please give me proper credit by linking back to [davidcobbina.com](http://c.com). Thanks!
 
 
 ## Enjoy
