@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:aerium/values/values.dart';
 import 'dart:ui' as ui;
-
 class ProjectDetailDesktop extends StatefulWidget {
   final ProjectDetails? projectDetails;
 
@@ -17,10 +16,11 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
   late Animation<double> _fadeInAnimation;
   late PdfViewerController _pdfViewerController;
 
-  late AllPortfolioData allPortfolioData; // All portfolio data
-  late ProjectDetails currentProject; // Current selected project
+  late AllPortfolioData allPortfolioData;
+  late ProjectDetails currentProject;
+  late String currentPdf;
 
-  late String currentPdf; // Store the current PDF
+  bool _showInstruction = true; // Flag to control visibility of the text
 
   @override
   void initState() {
@@ -37,27 +37,34 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
       ),
     );
 
-    _controller.forward(); // Start the fade-in animation
+    _controller.forward();
 
-    _pdfViewerController = PdfViewerController(); // Initialize PdfViewerController
+    _pdfViewerController = PdfViewerController();
 
-    // Initialize portfolio data (this is from your static data)
-    allPortfolioData = Data.allPortfolioData; // Access the static AllPortfolioData
-    currentProject = widget.projectDetails!; // The project passed from PortfolioPage
-    currentPdf = currentProject.pdf; // Set the initial PDF from the passed project
+    allPortfolioData = Data.allPortfolioData;
+    currentProject = widget.projectDetails!;
+    currentPdf = currentProject.pdf;
+
+    // Start a timer to hide the instruction after 3 seconds
+    Future.delayed(Duration(seconds: 2), () {
+      if (mounted) {
+        setState(() {
+          _showInstruction = false;
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _pdfViewerController.dispose(); // Dispose PdfViewerController
+    _pdfViewerController.dispose();
     super.dispose();
   }
 
-  // Function to handle PDF switching
   void _navigateToProjectDetail(String pdf) {
     setState(() {
-      currentPdf = pdf; // Update the current PDF
+      currentPdf = pdf;
     });
   }
 
@@ -71,13 +78,13 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
             child: FadeTransition(
               opacity: _fadeInAnimation,
               child: Container(
-                color: Colors.grey[100], // Background color
+                color: Colors.grey[100],
                 child: SfPdfViewer.asset(
-                  currentPdf, // Display the current PDF
+                  currentPdf,
                   controller: _pdfViewerController,
-                  interactionMode: PdfInteractionMode.pan, // Enable pan
-                  initialZoomLevel: 0.5, // Initial zoom level
-                  maxZoomLevel: 4.0, // Maximum zoom level
+                  interactionMode: PdfInteractionMode.pan,
+                  initialZoomLevel: 0.5,
+                  maxZoomLevel: 4.0,
                 ),
               ),
             ),
@@ -89,18 +96,38 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
             left: 40,
             child: Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(159, 22, 22, 22), // White color with opacity
-                shape: BoxShape.circle, // Ensure the button is circular
+                color: const Color.fromARGB(159, 22, 22, 22),
+                shape: BoxShape.circle,
               ),
               child: IconButton(
                 icon: Icon(Icons.arrow_back, color: const Color.fromARGB(255, 255, 191, 206)),
                 onPressed: () {
-                  Navigator.of(context).pop(); // Go back to the previous screen
+                  Navigator.of(context).pop();
                 },
               ),
             ),
           ),
 
+          // Instruction text in the center (visible only for 3 seconds)
+          if (_showInstruction)
+            Center(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color:Color.fromARGB(159, 22, 22, 22),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  "Double-tap if you want to zoom in", // Instruction text
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 255, 191, 206),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
 
           // Navigation buttons (bottom-right)
           Positioned(
@@ -109,25 +136,10 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // Buttons for projects
-                _buildProjectButton(
-                  allPortfolioData.title_1,
-                  allPortfolioData.pdf_1,
-                ),
-                _buildProjectButton(
-                  allPortfolioData.title_2,
-                  allPortfolioData.pdf_2,
-                ),
-                _buildProjectButton(
-                  allPortfolioData.title_3,
-                  allPortfolioData.pdf_3,
-                ),
-                _buildProjectButton(
-                  allPortfolioData.title_4,
-                  allPortfolioData.pdf_4,
-                ),
-
-               
+                _buildProjectButton(allPortfolioData.title_1, allPortfolioData.pdf_1),
+                _buildProjectButton(allPortfolioData.title_2, allPortfolioData.pdf_2),
+                _buildProjectButton(allPortfolioData.title_3, allPortfolioData.pdf_3),
+                _buildProjectButton(allPortfolioData.title_4, allPortfolioData.pdf_4),
               ],
             ),
           ),
@@ -136,7 +148,6 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
     );
   }
 
-  // Helper method to build the buttons for each project
   Widget _buildProjectButton(String title, String pdf) {
     bool isCurrentPdf = currentPdf == pdf;
 
@@ -144,18 +155,19 @@ class _ProjectDetailDesktopState extends State<ProjectDetailDesktop> with Ticker
       padding: const EdgeInsets.only(bottom: 10),
       child: ElevatedButton(
         onPressed: () {
-          _navigateToProjectDetail(pdf); // Switch to the selected project's PDF
+          _navigateToProjectDetail(pdf);
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: isCurrentPdf ?  AppColors.primaryColor : const Color.fromARGB(160, 255, 255, 255), // Highlight the selected project
-          padding: EdgeInsets.symmetric(vertical: 15), // Keep button height consistent
-          minimumSize: Size(200, 50), // Ensure all buttons have the same width and height
+          backgroundColor:
+              isCurrentPdf ? AppColors.primaryColor : const Color.fromARGB(160, 255, 255, 255),
+          padding: EdgeInsets.symmetric(vertical: 15),
+          minimumSize: Size(200, 50),
           textStyle: TextStyle(fontSize: isCurrentPdf ? 16 : 14),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: isCurrentPdf ? const ui.Color.fromARGB(255, 255, 191, 206) : Colors.black, // Change text color based on selection
+            color: isCurrentPdf ? const ui.Color.fromARGB(255, 255, 191, 206) : Colors.black,
           ),
         ),
       ),
