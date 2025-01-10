@@ -1,41 +1,34 @@
+# Aerium: My Personal Portfolio Website
+
 <h1 align="center">
-  <a href="https://david-legend.github.io/aerium/" target="_blank">david-legend.github.io/aerium/</a>
+  <a href="http://dreamyuee.github.io/dreamyuee/" target="_blank">Visit My Portfolio</a>
 </h1>
 
 <p align="center">
-    This is Aerium, a beautifully designed portfolio website built with <strong>flutter</strong>.
+    This is Aerium, a beautifully designed portfolio website built with <strong>Flutter</strong>.
 </p>
+
 <p align="center">
-    It is inspired by <a href="https://www.behance.net/gallery/68081313/Portfolio-Design-Concept?tracking_source=search_projects_recommended%7Cportfolio" target="_blank">Pavel G's Designs on Behance</a>
+    I modified the original project by [david-legend](https://github.com/david-legend/aerium) to create my own personal website.
 </p>
 
+---
 
+## 🚀 About
 
-![Screenshot](assets/screenshots/portfolio_design_1.png)
+I forked and modified the original **Aerium** project to build my own portfolio website. The design was inspired by [Pavel G's portfolio](https://www.behance.net/gallery/68081313/Portfolio-Design-Concept?tracking_source=search_projects_recommended%7Cportfolio) on Behance. It showcases my work and provides a clean, elegant design powered by **Flutter**.
 
-![Screenshot](assets/screenshots/portfolio_1.gif)
+Feel free to explore the code and see how I customized it to fit my personal style.
 
-## 🚨 Forking this repo (please read!)
+---
 
-I value keeping my site open source, but as you all know, _**plagiarism is bad**_. It's always disheartening whenever I find that someone has copied my site without giving me credit. I spent a non-trivial amount of effort building and designing this website, and I am proud of it! All I ask of you all is to not claim this effort as your own.
+## 🚨 Forking and Credit
 
-### TL;DR
+While I modified the original project, I want to give proper credit to the original author. You can fork and modify this project too, but please be sure to give credit where it's due.
 
-Yes, you can fork this repo. Please give me proper credit by linking back to [davidcobbina.com](http://c.com). Thanks!
+Original project by [david-legend](https://github.com/david-legend/aerium).
 
+---
 
-## Enjoy
-
-![Screenshot](assets/screenshots/portfolio_2.gif)
-
-![Screenshot](assets/screenshots/portfolio_3.gif)
-
-![Screenshot](assets/screenshots/portfolio_mobile_1.gif)
-
-## Actual Designs Used
-
-![Screenshot](assets/screenshots/portfolio_design_2.png)
-
-![Screenshot](assets/screenshots/portfolio_design_3.png)
-
-
+## 🔗 Links
+- [My Personal Website](http://dreamyuee.github.io/dreamyuee)
