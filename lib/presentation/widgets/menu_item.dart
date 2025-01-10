@@ -110,7 +110,7 @@ class _MenuItemState extends State<MenuItem> with TickerProviderStateMixin {
                       textStyle: !widget.selected
                           ? theme.textTheme.bodyLarge!.copyWith(
                               fontSize: Sizes.TEXT_SIZE_16,
-                              color: const Color.fromARGB(255, 255, 255, 255)
+                              color: const Color.fromARGB(255, 0, 0, 0)
                             )
                           : null,
                     ),
