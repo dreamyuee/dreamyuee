@@ -92,12 +92,12 @@ const RESOURCES = {"assets/AssetManifest.bin": "d7192e6c51e7f0fb3f68b8bfdfe36e2c
 "canvaskit/skwasm.wasm": "828c26a0b1cc8eb1adacbdd0c5e8bcfa",
 "canvaskit/skwasm.worker.js": "89990e8c92bcb123999aa81f7e203b1c",
 "flutter.js": "4b2350e14c6650ba82871f60906437ea",
-"flutter_bootstrap.js": "18ea2d1eff2bbbad10678f8eceef2b67",
+"flutter_bootstrap.js": "2b480aa1323804dc05e7d2babc7710f8",
 "icons/logo-aerium-1.png": "c9c1749b275f61ebc563d6596ccf2569",
 "icons/logo-aerium-2.png": "58b131c1e81194452cb702693c040a92",
-"index.html": "0dd52c75bf55aa1866e76c3a8922f5c9",
-"/": "0dd52c75bf55aa1866e76c3a8922f5c9",
-"main.dart.js": "601d105e830080519937b203095e6028",
+"index.html": "f058ed63978b0372a0fd8890f9b50bee",
+"/": "f058ed63978b0372a0fd8890f9b50bee",
+"main.dart.js": "787d4333cdfb476d2b8ae1841b46daef",
 "manifest.json": "10cdb0f0fc0bfe2ae02cdc7163277c38",
 "version.json": "3906fc5d38199c243ab81a45fee32c66"};
 // The application shell files that are downloaded before a service worker can
