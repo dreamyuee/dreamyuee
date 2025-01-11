@@ -3,13 +3,15 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger deployment on pushes to the main branch (or change to your default branch)
+      - master  # Trigger deployment on pushes to the main branch (or change to your default branch)
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Verify Trigger
+        run: echo "Workflow triggered"
       # Step 1: Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v2
