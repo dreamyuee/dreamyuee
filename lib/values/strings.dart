@@ -44,7 +44,7 @@ class StringConst {
   static const String BUILT_BY = "";
 
   static const String ABOUT_DEV_TEXT =
-      "";
+      "Hi! I'm an engineer with a background in circuits and control systems, but I've always been more interested in how humans interact with the technology I build. In my work, I focus on creating systems that balance technical precision with user-friendly design—like reducing the learning burden for users when there are limited buttons or implementing fault-tolerant mechanisms to prevent user errors. This approach has a lot in common with Human-Computer Interaction (HCI), though at the time, I didn't realize how much I cared about the human side of things.\n\nEverything changed when I took a course on user-centered design. It was like a lightbulb went off! I realized that the process of understanding users' needs and then using technology to meet those needs was exactly what I loved. This spark led me to shift from pure engineering to design, where I could create solutions that bridge the gap between technology and real people. And so, my new journey began.\n\nNow, I'm excited to keep exploring how design can shape the technology we use every day. My journey into this new world of design is just beginning, and I can't wait to see where it leads next."; // Replace StringConst.PUNCH_LINE;
 
   static const String EDUCATION_TEXT =
       "";

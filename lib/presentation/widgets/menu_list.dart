@@ -24,9 +24,7 @@ class MenuList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         ..._buildMenuList(menuList: menuList, context: context),
-        Spacer(
-          flex: 1,
-        ),
+        SpaceH40(),
         Socials(
           isVertical: true,
           alignment: Alignment.centerLeft,
@@ -38,14 +36,14 @@ class MenuList extends StatelessWidget {
           flex: 1,
         ),
         Padding(
-  padding: const EdgeInsets.only(right: 20.0), // 添加右边的额外间距
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        StringConst.DEV_NAME,
-        style: theme.textTheme.headlineMedium!.copyWith(
-          color: const ui.Color.fromARGB(255, 255, 191, 206),
+        padding: const EdgeInsets.only(right: 20.0), // 添加右边的额外间距
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Text(
+            StringConst.DEV_NAME,
+            style: theme.textTheme.headlineMedium!.copyWith(
+              color: const ui.Color.fromARGB(255, 255, 191, 206),
         ),
       ),
       Text(

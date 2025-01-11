@@ -10,6 +10,7 @@ import 'package:aerium/presentation/widgets/trailing_info.dart';
 import 'package:aerium/values/values.dart';
 
 
+
 class AboutPageDesktop extends StatefulWidget {
   @override
   _AboutPageDesktopState createState() => _AboutPageDesktopState();
@@ -168,7 +169,7 @@ _slideAnimation = Tween<Offset>(
     );
     widthOfAboutContent = Tween<double>(
       begin: 0.4,
-      end: 0.6,
+      end: 0.65,
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -308,25 +309,26 @@ Widget _buildAnimation(BuildContext context, Widget? child) {
                   Container(
                     width: assignWidth(
                       context: context,
+                      // fraction: 0.6,
                       fraction: widthOfAboutContent.value,
                     ),
                     child: _isAboutContentVisible
                         ? aboutPageContent()
                         : Container(),
                   ),
-                  SizedBox(
-                    width: assignWidth(
-                      context: context,
-                      fraction: 0.025,
-                    ),
-                  ),
-                  TrailingInfo(
-                    width: assignWidth(context: context, fraction: 0.075),
-                    onTrailingWidgetPressed: () => Navigator.pushNamed(
-                      context,
-                      PortfolioPage.portfolioPageRoute,
-                    ),
-                  ),
+                  // SizedBox(
+                  //   width: assignWidth(
+                  //     context: context,
+                  //     fraction: 0.025,
+                  //   ),
+                  // ),
+                  // TrailingInfo(
+                  //   width: assignWidth(context: context, fraction: 0.075),
+                  //   onTrailingWidgetPressed: () => Navigator.pushNamed(
+                  //     context,
+                  //     PortfolioPage.portfolioPageRoute,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -369,84 +371,16 @@ Widget _buildAnimation(BuildContext context, Widget? child) {
       ),
     );
   }
-
-  // Widget aboutPageContent() {
-  //   ThemeData theme = Theme.of(context);
-
-  //   return ListView(
-  //     padding: EdgeInsets.all(Sizes.PADDING_0),
-  //     children: [
-  //       Container(
-  //         padding: EdgeInsets.only(
-  //           left: (widthOfImage! / 2) + 20,
-  //           top: isDisplaySmallDesktopOrIpadPro(context)
-  //               ? assignHeight(context: context, fraction: 0.05)
-  //               : assignHeight(context: context, fraction: 0.12),
-  //         ),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             FlickerTextAnimation(
-  //               text: StringConst.INTRO,
-  //               textColor: AppColors.primaryColor,
-  //               fadeInColor: AppColors.primaryColor,
-  //               controller: _flickerAnimationController.view,
-  //               textStyle: theme.textTheme.bodyLarge!.copyWith(
-  //                 fontSize: Sizes.TEXT_SIZE_18,
-  //                 fontWeight: FontWeight.w400,
-  //                 color: AppColors.accentColor2,
-  //               ),
-  //             ),
-  //             FlickerTextAnimation(
-  //               text: StringConst.DEV_NAME,
-  //               textColor: AppColors.primaryColor,
-  //               fadeInColor: AppColors.primaryColor,
-  //               fontSize: Sizes.TEXT_SIZE_34,
-  //               controller: _flickerAnimationController.view,
-  //             ),
-  //             _isSubtitleVisible
-  //                 ? FlickerTextAnimation(
-  //                     text: StringConst.PUNCH_LINE,
-  //                     textColor: AppColors.primaryColor,
-  //                     fadeInColor: AppColors.primaryColor,
-  //                     controller: _flickerAnimationController2.view,
-  //                     textStyle: theme.textTheme.titleMedium!.copyWith(
-  //                       fontSize: Sizes.TEXT_SIZE_34,
-  //                       color: AppColors.accentColor2,
-  //                     ),
-  //                   )
-  //                 : Container(),
-  //             SpaceH16(),
-  //             AnimatedOpacity(
-  //               opacity: _visible ? aboutDevAnimation.value : 0.0,
-  //               duration: _aboutDevAnimationController.duration!,
-  //               child: Text(
-  //                 StringConst.ABOUT_DEV_TEXT,
-  //                 style: theme.textTheme.bodyMedium!.copyWith(
-  //                   color: AppColors.black,
-  //                   fontSize: Sizes.TEXT_SIZE_16,
-  //                 ),
-  //               ),
-  //             ),
-  //             SpaceH40(),
-  //             _isSubMenuListVisible
-  //                 ? SubMenuList(
-  //                     subMenuData: Data.subMenuData,
-  //                     width: assignWidth(
-  //                         context: context,
-  //                         fraction: 0.6,
-  //                         subs: (widthOfImage! / 2) + 20),
-  //                   )
-  //                 : Container(),
-  //           ],
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
 Widget aboutPageContent() {
   ThemeData theme = Theme.of(context);
+    bool _isExpanded = false; // Add a local variable to track the expanded state
+
+  return StatefulBuilder( // Use StatefulBuilder for state management within this widget
+    builder: (context, setState) {
+      final String fullText = StringConst.ABOUT_DEV_TEXT;
+      final String partialText = fullText.length > 200 
+          ? fullText.substring(0, 200) + "..." 
+          : fullText; // Ensure we don't cut short text
 
   return ListView(
     padding: EdgeInsets.all(Sizes.PADDING_0),
@@ -479,18 +413,74 @@ Widget aboutPageContent() {
               fontSize: Sizes.TEXT_SIZE_34,
               controller: _flickerAnimationController.view,
             ),
-            _isSubtitleVisible
-                ? FlickerTextAnimation(
-                    text: "", // Replace StringConst.PUNCH_LINE
-                    textColor: AppColors.primaryColor,
-                    fadeInColor: AppColors.primaryColor,
-                    controller: _flickerAnimationController2.view,
-                    textStyle: theme.textTheme.titleMedium!.copyWith(
-                      fontSize: Sizes.TEXT_SIZE_18,
-                      color: AppColors.accentColor2,
-                    ),
-                  )
-                : Container(),
+            // _isSubtitleVisible
+            //     ? FlickerTextAnimation(
+            //         text: "I'm an engineer with a background in circuits and control systems, but I've always been more interested in how humans interact with the technology I build. In my work, I focus on creating systems that balance technical precision with user-friendly design—like reducing the learning burden for users when there are limited buttons or implementing fault-tolerant mechanisms to prevent user errors. This approach has a lot in common with Human-Computer Interaction (HCI), though at the time, I didn’t realize how much I cared about the human side of things.\n\nEverything changed when I took a course on user-centered design. It was like a lightbulb went off! I realized that the process of understanding users' needs and then using technology to meet those needs was exactly what I loved. This spark led me to shift from pure engineering to design, where I could create solutions that bridge the gap between technology and real people. And so, my new journey began. Now, I'm excited to keep exploring how design can shape the technology we use every day. My journey into this new world of design is just beginning, and I can't wait to see where it leads next.", // Replace StringConst.PUNCH_LINE
+            //         // text:"I’m an engineer with a background in circuits and control systems, but I have always been more interested in how humans interact with the technology I build.  In my work, I focus on creating systems that balance technical precision with user-friendly design—like reducing the learning burden for users when there are limited buttons or implementing fault-tolerant mechanisms to prevent user errors.",
+            //         textColor: AppColors.primaryColor,
+            //         fadeInColor: AppColors.primaryColor,
+            //         controller: _flickerAnimationController2.view,
+            //         textStyle: theme.textTheme.bodyMedium!.copyWith(
+            //           fontSize: Sizes.TEXT_SIZE_18,
+            //           color: AppColors.accentColor2,
+            //         ),
+            //       )
+            //     : Container(),
+            SpaceH16(),
+             // About Me Section with Read More/Read Less
+                AnimatedOpacity(
+                  opacity: _visible ? aboutDevAnimation.value : 0.0,
+                  duration: _aboutDevAnimationController.duration!,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Expandable About Me Text
+                      AnimatedCrossFade(
+                        firstChild: Text(
+                          partialText,
+                          textAlign: TextAlign.justify,
+                          style: theme.textTheme.bodyMedium!.copyWith(
+                            color: AppColors.black,
+                            fontSize: Sizes.TEXT_SIZE_16,
+                            height: 1.6, // Improve readability
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        secondChild: Text(
+                          fullText,
+                          textAlign: TextAlign.justify,
+                          style: theme.textTheme.bodyMedium!.copyWith(
+                            color: AppColors.black,
+                            fontSize: Sizes.TEXT_SIZE_16,
+                            fontWeight: FontWeight.normal,
+                            height: 1.6,
+                          ),
+                        ),
+                        crossFadeState: _isExpanded
+                            ? CrossFadeState.showSecond
+                            : CrossFadeState.showFirst,
+                        duration: Duration(milliseconds: 300),
+                      ),
+
+                      // Read More/Read Less Button
+                     
+                        TextButton(
+                        onPressed: () {
+                          setState(() {
+                          _isExpanded = !_isExpanded; // Toggle state
+                          });
+                        },
+                        child: Text(
+                          _isExpanded ? "Read Less" : "Read More",
+                          style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.normal,
+                          ),
+                        )
+                        ),
+                    ],
+                  ),
+                ),
             SpaceH16(),
             AnimatedOpacity(
               opacity: _visible ? aboutDevAnimation.value : 0.0,
@@ -608,7 +598,7 @@ Widget aboutPageContent() {
                       ),
                       SpaceH8(),
                       Text(
-                        "2024    China College Computer Competition\n            Mobile Application Innovation Contest (East China Region)\n            Second Prize: Silent But Tangible",
+                        "2024    China College Computer Competition\n             Mobile Application Innovation Contest \n(East China Region)\n             Second Prize: Silent But Tangible",
                         style: theme.textTheme.bodyMedium!.copyWith(
                           color: Colors.black87,
                           fontSize: Sizes.TEXT_SIZE_16,
@@ -643,9 +633,11 @@ Widget aboutPageContent() {
                   ),
                   SpaceH16(),
                   Center(
+                  child: Container(
+                    width: 350, // Narrow the width of the skills section (adjust as needed)
                     child: Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 30, // Horizontal spacing
+                      alignment: WrapAlignment.start,
+                      spacing: 20, // Horizontal spacing
                       runSpacing: 20, // Vertical spacing
                       children: [
                         _buildSkillIcon('assets/images/figma.png'),
@@ -659,6 +651,8 @@ Widget aboutPageContent() {
                       ],
                     ),
                   ),
+                ),
+
                 ],
               ),
             ),
@@ -667,6 +661,8 @@ Widget aboutPageContent() {
       ),
     ],
   );
+},
+);
 }
 
 // Helper function to build skill icons

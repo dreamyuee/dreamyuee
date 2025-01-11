@@ -52,7 +52,7 @@ class Socials extends StatelessWidget {
                 ),
 
                 HorizontalBar(
-                  width: Sizes.WIDTH_24,
+                  width: Sizes.WIDTH_40,
                   color: barColor,
                   margin: EdgeInsets.symmetric(vertical: Sizes.MARGIN_4),
                 ),
@@ -66,7 +66,7 @@ class Socials extends StatelessWidget {
                 ),
                 
                 HorizontalBar(
-                  width: Sizes.WIDTH_24,
+                  width: Sizes.WIDTH_40,
                   color: barColor,
                   margin: EdgeInsets.symmetric(vertical: Sizes.MARGIN_4),
                 ),
@@ -132,7 +132,20 @@ class Socials extends StatelessWidget {
                   },
                   color: color,
                 ),
+                VerticalDivider(
+                  width: Sizes.WIDTH_8,
+                  thickness: 2,
+                  color: barColor,
+                ),
 
+                SocialButton(
+                  icon: FontAwesomeIcons.envelope,
+                  alignment: alignment,
+                  onPressed: () {
+                    Functions.launchUrl(StringConst.EMAIL_URL);
+                  },
+                  color: color,
+                ),
                 // VerticalDivider(
                 //   width: Sizes.WIDTH_8,
                 //   thickness: 2,
@@ -165,7 +178,7 @@ class Socials extends StatelessWidget {
   }
 }
 
-class SocialButton extends StatelessWidget {
+class SocialButton extends StatefulWidget {
   SocialButton({
     this.padding = const EdgeInsets.all(Sizes.PADDING_0),
     this.onPressed,
@@ -183,15 +196,52 @@ class SocialButton extends StatelessWidget {
   final Alignment? alignment;
 
   @override
+  _SocialButtonState createState() => _SocialButtonState();
+}
+
+class _SocialButtonState extends State<SocialButton> {
+  bool _isHovered = false; // Track hover state
+
+  @override
   Widget build(BuildContext context) {
-    return IconButton(
-      padding: padding,
-      onPressed: onPressed,
-      alignment: alignment!,
-      icon: Icon(
-        icon,
-        color: color,
-        size: iconSize,
+    return MouseRegion(
+      onEnter: (_) {
+        setState(() {
+          _isHovered = true; // Set hover state to true
+        });
+      },
+      onExit: (_) {
+        setState(() {
+          _isHovered = false; // Reset hover state
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300), // Smooth transition
+        padding: widget.padding,
+        decoration: BoxDecoration(
+          color: _isHovered
+              ? widget.color.withOpacity(0.2) // Light background on hover
+              : Colors.transparent, // Transparent by default
+          shape: BoxShape.circle,
+          boxShadow: _isHovered
+              ? [
+                  BoxShadow(
+                    color: Colors.black26, // Shadow color
+                    blurRadius: 8.0, // Blur radius
+                    offset: Offset(0, 4), // Shadow position
+                  ),
+                ]
+              : [],
+        ),
+        child: IconButton(
+          onPressed: widget.onPressed,
+          alignment: widget.alignment!,
+          icon: Icon(
+            widget.icon,
+            color: widget.color, // Default icon color
+            size: _isHovered ? widget.iconSize * 1.2 : widget.iconSize, // Scale icon on hover
+          ),
+        ),
       ),
     );
   }
