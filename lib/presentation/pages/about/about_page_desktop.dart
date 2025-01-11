@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:aerium/core/layout/adaptive.dart';
 import 'package:aerium/presentation/pages/about/about_page.dart';
-import 'package:aerium/presentation/pages/portfolio/portfolio_page.dart';
 import 'package:aerium/presentation/widgets/content_wrapper.dart';
 import 'package:aerium/presentation/widgets/flicker_text_animation.dart';
 import 'package:aerium/presentation/widgets/menu_list.dart';
 import 'package:aerium/presentation/widgets/spaces.dart';
-import 'package:aerium/presentation/widgets/trailing_info.dart';
 import 'package:aerium/values/values.dart';
 
 
