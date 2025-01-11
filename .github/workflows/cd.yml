@@ -1,15 +1,39 @@
-name: Gh-Pages
+name: Deploy Flutter Web to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - main  # Trigger deployment on pushes to the main branch (or change to your default branch)
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
-      - uses: erickzanardo/flutter-gh-pages@v3
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.0'  # Specify the Flutter version you're using
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 4: Build Flutter Web
+      - name: Build Flutter Web
+        run: flutter build web
+
+      # Step 5: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+          publish_dir: ./build/web  # Directory to publish (output of `flutter build web`)
+          publish_branch: gh-pages  # The branch to deploy to (usually `gh-pages`)
+          user_name: 'github-actions'  # User name for the commit
+          user_email: 'github-actions@github.com'  # User email for the commits
