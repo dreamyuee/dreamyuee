@@ -95,8 +95,8 @@ const RESOURCES = {"assets/AssetManifest.bin": "d7192e6c51e7f0fb3f68b8bfdfe36e2c
 "flutter_bootstrap.js": "f56f8b7105920e65bc5af36c05c67347",
 "icons/logo-aerium-1.png": "c9c1749b275f61ebc563d6596ccf2569",
 "icons/logo-aerium-2.png": "58b131c1e81194452cb702693c040a92",
-"index.html": "af701fb26d81cfab0231d67d3ba723ec",
-"/": "af701fb26d81cfab0231d67d3ba723ec",
+"index.html": "8c72a46cc44a3e05ce6cf172e3360fe3",
+"/": "8c72a46cc44a3e05ce6cf172e3360fe3",
 "main.dart.js": "24694c491d1327cdbd48f6af2772156c",
 "manifest.json": "10cdb0f0fc0bfe2ae02cdc7163277c38",
 "version.json": "3906fc5d38199c243ab81a45fee32c66"};
