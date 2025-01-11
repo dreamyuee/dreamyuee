@@ -98,8 +98,8 @@ class _PortfolioPageMobileState extends State<PortfolioPageMobile>
                     projectDetails: ProjectDetails(
                       projectImage: Data.portfolioData[index].image,
                       projectName: Data.portfolioData[index].title,
-                      projectDescription:
-                          Data.portfolioData[index].portfolioDescription,
+                      projectDescription:Data.portfolioData[index].portfolioDescription,
+                      additionalDescription:Data.portfolioData[index].additionalDescription,
                       isPublic: Data.portfolioData[index].isPublic,
                       isLive: Data.portfolioData[index].isLive,
                       isOnPlayStore: Data.portfolioData[index].isOnPlayStore,

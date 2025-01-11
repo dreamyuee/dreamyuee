@@ -182,6 +182,7 @@ class StringConst {
   static const String LOGIN_CATALOG_PDF ="assets/images/hugme.pdf";
   static const String LOGIN_CATALOG_DETAIL =
       "Hey, you don't have to keep eating.";
+  static const String LOGIN_CATALOG_DESCRIPTION ="I worked on this project to help people manage binge eating because of my own personal experience with binge eating disorder. One time, while watching a documentary on bulimia nervosa, I was reminded of the painful struggles I went through, which made me realize how much I wanted to help others facing similar challenges. Having gone through it myself, I understood what they were experiencing, and that motivated me to create something that could make a difference.\n\nThe project combined an app and a device to help users manage binge eating by offering emotional support, distraction, group support, and motivation. I designed the user interface for the app to make it easy for users to access these tools. For the device, I modified a slap bracelet with Arduino and ESP32-CAM. It tracks binge eating behavior by detecting chin movement with FaceMesh and food with YOLOv8. The device sends real-time data to help users monitor their behavior and provide support when needed. This project was about creating a system that offers both emotional care and practical help to those struggling with binge eating.";
   static const String LOGIN_CATALOG_GITHUB_URL =
       "https://github.com/david-legend/login_catalog";
 
@@ -205,6 +206,7 @@ class StringConst {
   static const String FOODY_BITE_SUBTITLE =
       "Engineering design | Accessibility design";
   static const String FOODY_BITE_DETAIL = "Hello, this is a hearing-impaired delivery rider.";
+  static const String FOODY_BITE_DESCRIPTION ="In this project, I worked with a design student to develop a solution for delivery workers with hearing impairments(DHH riders). Our goal was to create a more friendly, connected, and accessible community. After talking to the riders, we learned that, unlike in many other contexts, delivery workers don’t need as much emotional communication. Instead, their primary need is clarity and ease of interaction. This insight led us to focus on designing simple, custom vibration patterns on wrist-worn devices that could alert them to important notifications without overwhelming them with unnecessary emotional cues.\n\nBy using my skills in Swift programming and device integration, we developed a communication system that helped them receive important alerts more effectively. This experience not only deepened my interest in working closely with users but also made me realize how much I enjoy designing solutions that meet real, practical needs.";
   static const String FOODY_BITE_PDF = "assets/images/vibra.pdf";
   static const String FOODY_BITE_GITHUB_URL =
       "https://github.com/david-legend/foodybite";
@@ -213,6 +215,7 @@ class StringConst {
   static const String ONBOARDING_APP_SUBTITLE = "User research | Interaction design";
   static const String ONBOARDING_APP_DETAIL = "Who's taking care of women's gynecological health?";
   static const String ONBOARDING_APP_PDF = "assets/images/gyncare.pdf";
+  static const String ONBOARDING_APP_DESCRIPTION = "I designed this app, which focused on long-term gynecological health support, after a personal experience during my first gynecological check-up. I felt anxious, uncomfortable, and humiliated by an insensitive comment from the doctor, which made me realize that many women lack proper education and emotional support in healthcare settings. This experience led me to research women’s healthcare, where I found a strong need for personalized care and empathetic design.\n\nI conducted user interviews with five women to identify their challenges and needs in gynecological health. Using these insights, I defined the app’s requirements and designed over 15 high-fidelity wireframes on Figma. The goal was to create an app that not only provides AI-driven insights but also offers emotional support and education. This project reinforced my passion for combining technology with human-centered design to improve real-world experiences.";
   static const String ONBOARDING_APP_GITHUB_URL =
       "https://github.com/david-legend/onboarding-app";
 
@@ -221,6 +224,7 @@ class StringConst {
       "Game design | Family relationship research";
   static const String OTP_TEXT_FIELD_DETAIL = "Respect and trust in the parent-child bond.";
   static const String OTP_TEXT_FIELD_PDF = "assets/images/love.pdf";
+  static const String OTP_TEXT_FIELD_DESCRIPTION = "I created this 2D RPG game to explore the challenging relationship between parents and children in Chinese families. The game focuses on how important mutual respect and trust are for better communication. I wanted players to experience this issue and think about how they can improve their relationships with their own parents.\n\nIn the game, I designed the story, puzzles, items, and scenes to make it interesting and engaging. I also created challenges that help players understand the struggle of the characters. Using Unity, I developed the game, adding features like item interactions and smooth animations to make it fun and interactive. The goal was to create a meaningful experience that encourages players to reflect on the importance of healthy communication in family relationships.";
   static const String OTP_TEXT_FIELD_GITHUB_URL =
       "https://github.com/david-legend/otp_textfield";
   static const String OTP_TEXT_FIELD_WEB_URL =

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:aerium/presentation/widgets/spaces.dart';
-
 import 'package:aerium/presentation/widgets/horizontal_bar.dart';
 import 'package:aerium/values/values.dart';
+import 'dart:ui' as ui;
+
 
 class PortfolioCard extends StatefulWidget {
   PortfolioCard({
@@ -20,7 +21,9 @@ class PortfolioCard extends StatefulWidget {
     this.actionTitleTextStyle,
     this.duration = 1000,
     this.onTap,
-    this.projectDescription
+    this.projectDescription,
+    this.additionalDescription, // New additional description field
+    this.subtitleColor,
   });
 
   final double width;
@@ -38,6 +41,8 @@ class PortfolioCard extends StatefulWidget {
   final int duration;
   final GestureTapCallback? onTap;
   final String? projectDescription;
+  final String? additionalDescription; // New additional description
+  final Color? subtitleColor;
 
   @override
   _PortfolioCardState createState() => _PortfolioCardState();
@@ -46,7 +51,9 @@ class PortfolioCard extends StatefulWidget {
 class _PortfolioCardState extends State<PortfolioCard>
     with TickerProviderStateMixin {
   late AnimationController _portfolioCoverController;
+  late AnimationController _expandController;
   late Animation<double> _opacityAnimation;
+  late Animation<double> _expandAnimation; // For additional description
   final int duration = 400;
   bool _hovering = false;
 
@@ -56,6 +63,12 @@ class _PortfolioCardState extends State<PortfolioCard>
       duration: Duration(milliseconds: duration),
       vsync: this,
     );
+
+    _expandController = AnimationController(
+      duration: Duration(milliseconds: 300), // Expand animation duration
+      vsync: this,
+    );
+
     initTweens();
 
     super.initState();
@@ -64,6 +77,7 @@ class _PortfolioCardState extends State<PortfolioCard>
   @override
   void dispose() {
     _portfolioCoverController.dispose();
+    _expandController.dispose();
     super.dispose();
   }
 
@@ -79,6 +93,16 @@ class _PortfolioCardState extends State<PortfolioCard>
           1.0,
           curve: Curves.easeIn,
         ),
+      ),
+    );
+
+    _expandAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _expandController,
+        curve: Curves.easeInOut,
       ),
     );
   }
@@ -134,8 +158,10 @@ class _PortfolioCardState extends State<PortfolioCard>
                               textAlign: TextAlign.center,
                               style: widget.subtitleTextStyle ??
                                   theme.textTheme.bodyLarge!.copyWith(
-                                      color: AppColors.secondaryColor,
-                                      fontSize: Sizes.TEXT_SIZE_16),
+                                      // color: const Color.fromARGB(255, 221, 114, 139),
+                                      color : widget.subtitleColor!,
+                                      fontSize: Sizes.TEXT_SIZE_16,
+                                      fontWeight: FontWeight.bold),
                             ),
                             SpaceH4(),
                             Text(
@@ -146,15 +172,73 @@ class _PortfolioCardState extends State<PortfolioCard>
                                       color: AppColors.secondaryColor,
                                       fontSize: Sizes.TEXT_SIZE_16),
                             ),
-                            SpaceH16(),
-                            Text(
-                              widget.actionTitleTextStyle as String? ?? widget.actionTitle!,
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.titleMedium!
-                                  .copyWith(color: AppColors.secondaryColor),
+                            // New additional description section
+                            SizeTransition(
+                            sizeFactor: _expandAnimation,
+                            axisAlignment: 1.0,
+                            child: Column(
+                              children: [
+                                ExpansionTile(
+                                  title: Center(
+                                    child: Text(
+                                      "          Description",
+                                      textAlign: TextAlign.center,
+                                      style: theme.textTheme.bodySmall!.copyWith(
+                                        color: AppColors.secondaryColor,
+                                        fontSize: Sizes.TEXT_SIZE_16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  collapsedIconColor: Colors.transparent, // 可选：隐藏默认图标
+                                  tilePadding: EdgeInsets.zero, // 去掉默认 tile 内间距
+                                  children: [
+                                    // Semi-transparent container for detailed description
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16.0,
+                                        vertical: 16.0, // Reduced vertical padding for tighter spacing
+                                      ), 
+
+                                      decoration: BoxDecoration(
+                                        color: Color.fromARGB(200, 0, 0, 0),// Semi-transparent black background
+                                        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                                      ),
+                                      child: Text(
+                                        widget.additionalDescription!,
+                                        textAlign: TextAlign.justify,
+                                        style: theme.textTheme.bodyMedium!.copyWith(
+                                          color: AppColors.secondaryColor, // Slightly lighter white for readability
+                                          fontSize: Sizes.TEXT_SIZE_14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            SpaceH4(),
-                            HorizontalBar(color: AppColors.secondaryColor),
+                          ),
+                           SpaceH8(),
+                            InkWell(
+                              onTap: widget.onTap, // Use the provided onTap callback
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                                decoration: BoxDecoration(
+                                  color: widget.subtitleColor!, // Add a background color for the button
+                                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                                ),
+                                child: Text(
+                                  widget.actionTitleTextStyle as String? ?? widget.actionTitle!, // Use the provided actionTitle or fallback to "View"
+                                  textAlign: TextAlign.center,
+                                  style: theme.textTheme.bodyMedium!.copyWith(
+                                    color: const Color.fromARGB(255, 0, 0, 0), // White text for contrast
+                                    fontSize: Sizes.TEXT_SIZE_16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+
                             Spacer(flex: 1),
                           ],
                         ),
@@ -175,8 +259,10 @@ class _PortfolioCardState extends State<PortfolioCard>
 
     if (_hovering == true) {
       _playPortfolioCoverAnimation();
+      _expandController.forward(); // Play expand animation
     } else if (_hovering == false) {
       _portfolioCoverController.reverse().orCancel;
+      _expandController.reverse(); // Reverse expand animation
     }
   }
 }

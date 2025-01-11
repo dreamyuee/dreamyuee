@@ -33,6 +33,7 @@ class ProjectDetails {
     required this.projectImage,
     required this.projectName,
     required this.projectDescription,
+    required this.additionalDescription,
     required this.pdf,
     this.technologyUsed,
     this.isPublic,
@@ -48,6 +49,7 @@ class ProjectDetails {
   final String projectImage;
   final String projectName;
   final String projectDescription;
+  final String additionalDescription;
   final bool? isPublic;
   final bool? isOnPlayStore;
   final bool? isLive;
@@ -67,6 +69,7 @@ class PortfolioData {
     required this.subtitle,
     required this.portfolioDescription,
     required this.pdf,
+    required this.additionalDescription,
     this.technologyUsed,
     this.isPublic = false,
     this.isOnPlayStore = false,
@@ -75,11 +78,13 @@ class PortfolioData {
     this.hasBeenReleased = true,
     this.playStoreUrl = "",
     this.webUrl = "",
+    this.subtitleColor,
 
   });
 
   final String image;
   final String portfolioDescription;
+  final String additionalDescription;
   final double imageSize;
   final String title;
   final String subtitle;
@@ -92,6 +97,7 @@ class PortfolioData {
   final String webUrl;
   final String? technologyUsed;
   final String pdf;
+  final Color? subtitleColor;
   
 }
 
@@ -219,6 +225,8 @@ class Data {
       subtitle: StringConst.ONBOARDING_APP_SUBTITLE,
       image: ImagePath.ONBOARDING_APP,
       portfolioDescription: StringConst.ONBOARDING_APP_DETAIL,
+      additionalDescription: StringConst.ONBOARDING_APP_DESCRIPTION,
+      subtitleColor : Color.fromARGB(255, 221, 114, 139),
       imageSize: 0.15,
       isPublic: true,
       technologyUsed: StringConst.FLUTTER,
@@ -231,6 +239,8 @@ class Data {
       subtitle: StringConst.OTP_TEXT_FIELD_SUBTITLE,
       image: ImagePath.OTP_TEXT_FIELD,
       portfolioDescription: StringConst.OTP_TEXT_FIELD_DETAIL,
+      additionalDescription: StringConst.OTP_TEXT_FIELD_DESCRIPTION,
+      subtitleColor: Color.fromARGB(255, 180, 98, 50),
       imageSize: 0.15,
       isPublic: true,
       isLive: true,
@@ -244,6 +254,8 @@ class Data {
       subtitle: StringConst.LOGIN_CATALOG_SUBTITLE,
       image: ImagePath.LOGIN_CATALOG,
       portfolioDescription: StringConst.LOGIN_CATALOG_DETAIL,
+      additionalDescription: StringConst.LOGIN_CATALOG_DESCRIPTION,
+      subtitleColor: Color.fromARGB(255, 219, 177, 64),
       imageSize: 0.3,
       isPublic: true,
       technologyUsed: StringConst.FLUTTER,
@@ -255,6 +267,8 @@ class Data {
       subtitle: StringConst.FOODY_BITE_SUBTITLE,
       image: ImagePath.FOODY_BITE,
       portfolioDescription: StringConst.FOODY_BITE_DETAIL,
+      additionalDescription: StringConst.FOODY_BITE_DESCRIPTION,
+      subtitleColor:  Color.fromARGB(255, 43, 119, 184),
       imageSize: 0.45,
       isPublic: true,
       technologyUsed: StringConst.FLUTTER,
@@ -266,6 +280,7 @@ class Data {
       subtitle: StringConst.FINOPP_SUBTITLE,
       image: ImagePath.FINOPP,
       portfolioDescription: StringConst.FINOPP_DETAIL,
+      additionalDescription: "",
       imageSize: 0.15,
       isPublic: true,
       technologyUsed: StringConst.FLUTTER,
@@ -277,6 +292,7 @@ class Data {
       subtitle: StringConst.BEQUIP_LOGISTICS_SUBTITLE,
       image: ImagePath.BEQUIP_LOGISTICS,
       portfolioDescription: StringConst.BEQUIP_LOGISTICS_DETAIL,
+      additionalDescription: "",
       imageSize: 0.3,
       isLive: true,
       technologyUsed: StringConst.WORDPRESS,
@@ -288,6 +304,7 @@ class Data {
       subtitle: StringConst.AERIUM_SUBTITLE,
       image: ImagePath.AERIUM,
       portfolioDescription: StringConst.AERIUM_DETAIL,
+      additionalDescription: "",
       imageSize: 0.3,
       isPublic: true,
       isLive: true,
@@ -301,6 +318,7 @@ class Data {
       subtitle: StringConst.LEARN_UPP_SUBTITLE,
       image: ImagePath.LEARN_UPP,
       portfolioDescription: StringConst.LEARN_UPP_DETAIL,
+      additionalDescription: "",
       imageSize: 0.3,
       isPublic: true,
       technologyUsed: StringConst.FLUTTER,
@@ -312,6 +330,7 @@ class Data {
       subtitle: StringConst.VYBZ_SUBTITLE,
       image: ImagePath.VYBZ,
       portfolioDescription: StringConst.VYBZ_DETAIL,
+      additionalDescription: "",
       imageSize: 0.15,
       isOnPlayStore: false,
       hasBeenReleased: false,
@@ -324,6 +343,7 @@ class Data {
       subtitle: StringConst.COLOSSAL_TOONS_SUBTITLE,
       image: ImagePath.COLOSSAL_TOONS,
       portfolioDescription: StringConst.COLOSSAL_TOONS_DETAIL,
+      additionalDescription: "",
       imageSize: 0.15,
       isOnPlayStore: false,
       hasBeenReleased: false,

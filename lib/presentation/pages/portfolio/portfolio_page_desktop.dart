@@ -263,7 +263,8 @@ Widget _buildPortfolioGallery() {
             title: Data.portfolioData[index].title,
             subtitle: Data.portfolioData[index].subtitle,
             projectDescription: Data.portfolioData[index].portfolioDescription,
-
+            additionalDescription: Data.portfolioData[index].additionalDescription,
+            subtitleColor: Data.portfolioData[index].subtitleColor,
             actionTitle: StringConst.VIEW,
             onTap: () {
               _navigateToProjectDetail(
@@ -271,6 +272,7 @@ Widget _buildPortfolioGallery() {
                   projectImage: Data.portfolioData[index].image,
                   projectName: Data.portfolioData[index].title,
                   projectDescription: Data.portfolioData[index].portfolioDescription,
+                  additionalDescription: Data.portfolioData[index].additionalDescription,
                   isPublic: Data.portfolioData[index].isPublic,
                   isLive: Data.portfolioData[index].isLive,
                   isOnPlayStore: Data.portfolioData[index].isOnPlayStore,
@@ -293,76 +295,76 @@ Widget _buildPortfolioGallery() {
 }
 
 
-  List<Widget> _portfolioItem(List<PortfolioData> portfolioData) {
-    List<Widget> widgets = [];
-    double duration =
-        _portfolioController.duration!.inMilliseconds.roundToDouble();
-    double durationForEachPortfolio =
-        _portfolioController.duration!.inMilliseconds.roundToDouble() /
-            portfolioData.length;
-    for (var i = 0; i < portfolioData.length; i++) {
-//      print("duration $duration");
-//      print(
-//          "duration starts from ${durationForEachPortfolio * i} and ends at ${durationForEachPortfolio * (i + 1)} ");
-      double start = durationForEachPortfolio * i;
-      double end = durationForEachPortfolio * (i + 1);
-      widgets.add(
-        FadeTransition(
-          opacity: Tween<double>(
-            begin: 0,
-            end: 1,
-          ).animate(
-            CurvedAnimation(
-              parent: _portfolioController,
-              curve: Interval(
-                start > 0.0 ? start / duration : 0.0,
-                end > 0.0 ? end / duration : 1.0,
-                curve: Curves.easeIn,
-              ),
-            ),
-          ),
-          child: PortfolioCard(
-            imageUrl: portfolioData[i].image,
-            title: portfolioData[i].title,
-            subtitle: portfolioData[i].subtitle,
-            projectDescription: portfolioData[i].portfolioDescription,
-            actionTitle: StringConst.VIEW,
-            onTap: () {
-              _navigateToProjectDetail(
-                projectDetails: ProjectDetails(
-                  projectImage: portfolioData[i].image,
-                  projectName: portfolioData[i].title,
-                  projectDescription: portfolioData[i].portfolioDescription,
-                  isPublic: portfolioData[i].isPublic,
-                  isLive: portfolioData[i].isLive,
-                  isOnPlayStore: portfolioData[i].isOnPlayStore,
-                  gitHubUrl: portfolioData[i].gitHubUrl,
-                  hasBeenReleased: portfolioData[i].hasBeenReleased,
-                  technologyUsed: portfolioData[i].technologyUsed,
-                  playStoreUrl: portfolioData[i].playStoreUrl,
-                  webUrl: portfolioData[i].webUrl,
-                  pdf: portfolioData[i].pdf,
-                ),
-              );
-            },
-            height: isDisplaySmallDesktopOrIpadPro(context)
-                ? assignHeight(context: context, fraction: 0.3)
-                : assignHeight(context: context, fraction: 0.45),
-            width: isDisplaySmallDesktopOrIpadPro(context)
-                ? assignWidth(
-                    context: context,
-                    fraction: 0.3,
-                  )
-                : assignWidth(
-                    context: context,
-                    fraction: portfolioData[i].imageSize,
-                  ),
-          ),
-        ),
-      );
-    }
-    return widgets;
-  }
+//   List<Widget> _portfolioItem(List<PortfolioData> portfolioData) {
+//     List<Widget> widgets = [];
+//     double duration =
+//         _portfolioController.duration!.inMilliseconds.roundToDouble();
+//     double durationForEachPortfolio =
+//         _portfolioController.duration!.inMilliseconds.roundToDouble() /
+//             portfolioData.length;
+//     for (var i = 0; i < portfolioData.length; i++) {
+// //      print("duration $duration");
+// //      print(
+// //          "duration starts from ${durationForEachPortfolio * i} and ends at ${durationForEachPortfolio * (i + 1)} ");
+//       double start = durationForEachPortfolio * i;
+//       double end = durationForEachPortfolio * (i + 1);
+//       widgets.add(
+//         FadeTransition(
+//           opacity: Tween<double>(
+//             begin: 0,
+//             end: 1,
+//           ).animate(
+//             CurvedAnimation(
+//               parent: _portfolioController,
+//               curve: Interval(
+//                 start > 0.0 ? start / duration : 0.0,
+//                 end > 0.0 ? end / duration : 1.0,
+//                 curve: Curves.easeIn,
+//               ),
+//             ),
+//           ),
+//           child: PortfolioCard(
+//             imageUrl: portfolioData[i].image,
+//             title: portfolioData[i].title,
+//             subtitle: portfolioData[i].subtitle,
+//             projectDescription: portfolioData[i].portfolioDescription,
+//             actionTitle: StringConst.VIEW,
+//             onTap: () {
+//               _navigateToProjectDetail(
+//                 projectDetails: ProjectDetails(
+//                   projectImage: portfolioData[i].image,
+//                   projectName: portfolioData[i].title,
+//                   projectDescription: portfolioData[i].portfolioDescription,
+//                   isPublic: portfolioData[i].isPublic,
+//                   isLive: portfolioData[i].isLive,
+//                   isOnPlayStore: portfolioData[i].isOnPlayStore,
+//                   gitHubUrl: portfolioData[i].gitHubUrl,
+//                   hasBeenReleased: portfolioData[i].hasBeenReleased,
+//                   technologyUsed: portfolioData[i].technologyUsed,
+//                   playStoreUrl: portfolioData[i].playStoreUrl,
+//                   webUrl: portfolioData[i].webUrl,
+//                   pdf: portfolioData[i].pdf,
+//                 ),
+//               );
+//             },
+//             height: isDisplaySmallDesktopOrIpadPro(context)
+//                 ? assignHeight(context: context, fraction: 0.3)
+//                 : assignHeight(context: context, fraction: 0.45),
+//             width: isDisplaySmallDesktopOrIpadPro(context)
+//                 ? assignWidth(
+//                     context: context,
+//                     fraction: 0.3,
+//                   )
+//                 : assignWidth(
+//                     context: context,
+//                     fraction: portfolioData[i].imageSize,
+//                   ),
+//           ),
+//         ),
+//       );
+//     }
+//     return widgets;
+//   }
 
   _scroll(double offset) {
     _scrollController.animateTo(

@@ -461,17 +461,17 @@ Widget aboutPageContent() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FlickerTextAnimation(
-              text: "Introduction", // Replace StringConst.INTRO with "Introduction"
-              textColor: AppColors.primaryColor,
-              fadeInColor: AppColors.primaryColor,
-              controller: _flickerAnimationController.view,
-              textStyle: theme.textTheme.bodyLarge!.copyWith(
-                fontSize: Sizes.TEXT_SIZE_18,
-                fontWeight: FontWeight.w400,
-                color: AppColors.accentColor2,
-              ),
-            ),
+            // FlickerTextAnimation(
+            //   text: "Introduction", // Replace StringConst.INTRO with "Introduction"
+            //   textColor: AppColors.primaryColor,
+            //   fadeInColor: AppColors.primaryColor,
+            //   controller: _flickerAnimationController.view,
+            //   textStyle: theme.textTheme.bodyLarge!.copyWith(
+            //     fontSize: Sizes.TEXT_SIZE_18,
+            //     fontWeight: FontWeight.w400,
+            //     color: AppColors.accentColor2,
+            //   ),
+            // ),
             FlickerTextAnimation(
               text: "Yue Wen", // Replace StringConst.DEV_NAME with your name
               textColor: AppColors.primaryColor,
@@ -481,12 +481,12 @@ Widget aboutPageContent() {
             ),
             _isSubtitleVisible
                 ? FlickerTextAnimation(
-                    text: "Purposeful Design, Meaningful Technology", // Replace StringConst.PUNCH_LINE
+                    text: "", // Replace StringConst.PUNCH_LINE
                     textColor: AppColors.primaryColor,
                     fadeInColor: AppColors.primaryColor,
                     controller: _flickerAnimationController2.view,
                     textStyle: theme.textTheme.titleMedium!.copyWith(
-                      fontSize: Sizes.TEXT_SIZE_34,
+                      fontSize: Sizes.TEXT_SIZE_18,
                       color: AppColors.accentColor2,
                     ),
                   )
