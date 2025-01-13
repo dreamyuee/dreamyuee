@@ -50426,7 +50426,7 @@ $0(){A.d1(this.a,!1).np(null)},
 $S:0}
 A.acq.prototype={
 $0(){var s=this.a[this.b],r=s.a
-if(r==="Resume/CV")A.eV("assets/docs/CV_Yue_Wen.pdf")
+if(r==="Resume/CV")A.eV("assets/assets/images/CV_Yue_Wen.pdf")
 else if(r==="Contact")A.eV("mailto:<wenyve17@163.com>?subject=&body=")
 else A.d1(this.c,!1).TR(s.b,t.X)},
 $S:0}
@@ -50716,7 +50716,7 @@ $0(){return A.eV("https://davidcobbina.com")},
 $S:0}
 A.anN.prototype={
 $0(){var s=this.a[this.b],r=s.a
-if(r==="Resume/CV")A.eV("assets/docs/CV_Yue_Wen.pdf")
+if(r==="Resume/CV")A.eV("assets/assets/images/CV_Yue_Wen.pdf")
 else if(r==="Contact")A.eV("mailto:<wenyve17@163.com>?subject=&body=")
 else A.d1(this.c,!1).TR(s.b,t.X)},
 $S:0}
